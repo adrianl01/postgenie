@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
-      <div className="max-w-3xl w-full bg-white p-8 rounded-2xl shadow">
+      <div className="max-w-3xl w-full p-8 rounded-2xl shadow">
         <h1 className="text-3xl font-bold mb-2">PostGenie</h1>
         <p className="text-gray-600 mb-6">
           AI Social Media Post Generator — create texts, hashtags in seconds.
