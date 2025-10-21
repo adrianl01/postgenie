@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { topic = "", platform = "X", tone = "Profesional" } = body;
+    const { topic = "", platform = "Instagram", tone = "Profesional" } = body;
 
     if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(

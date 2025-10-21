@@ -16,8 +16,8 @@ export default function PostPreview({ result }: { result: any }) {
   }, [result]);
   if (!data) {
     return (
-      <div className="bg-white p-6 rounded-xl shadow h-full">
-        <p className="text-gray-500">Generated Post Preview</p>
+      <div className="flex justify-center items-center bg-white p-6 rounded-xl shadow h-full">
+        <p className="text-gray-500">Here you'll see your generated post</p>
       </div>
     );
   }
@@ -39,21 +39,22 @@ export default function PostPreview({ result }: { result: any }) {
         {data.content}
       </p>
       <div className="flex flex-wrap gap-2">
-        {result.hashtags?.map((h: string, idx: number) => (
-          <span
-            key={idx}
-            onClick={(e) => {
-              e.preventDefault();
-              const textContent = `#${h.replace("#", "")}`;
-              navigator.clipboard.writeText(textContent);
-              setIsCopied(true);
-              setTimeout(() => setIsCopied(false), 2000);
-            }}
-            className="text-sm px-2 py-1 bg-gray-300 rounded hover:bg-gray-400 transition cursor-pointer"
-          >
-            #{h.replace("#", "")}
-          </span>
-        ))}
+        {result &&
+          result.hashtags?.map((h: string, idx: number) => (
+            <span
+              key={idx}
+              onClick={(e) => {
+                e.preventDefault();
+                const textContent = `#${h.replace("#", "")}`;
+                navigator.clipboard.writeText(textContent);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 2000);
+              }}
+              className="text-sm px-2 py-1 bg-gray-300 rounded hover:bg-gray-400 transition cursor-pointer"
+            >
+              #{h.replace("#", "")}
+            </span>
+          ))}
       </div>
       {isCopied && <CopiedSign />}
     </div>
